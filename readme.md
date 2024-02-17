@@ -3,7 +3,7 @@ SeaPool
 
 A tool for combining many C and/or C++ files into one file.
 
-~~~
+~~~ ruby
 Amalgamate.new do |a|
 
     # these files will be combined into output
