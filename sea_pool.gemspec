@@ -1,4 +1,4 @@
-require File.expand_path("../lib/amalgamate/version", __FILE__)
+require File.expand_path("../lib/sea_pool/version", __FILE__)
 require 'time'
 
 Gem::Specification.new do |s|
@@ -9,7 +9,6 @@ Gem::Specification.new do |s|
   s.author  = "Cameron Harper"
   s.date = Date.today.to_s
   s.files = Dir.glob("lib/**/*.rb")
-  s.website = "https://github.com/cjhdev/sea_pool"
   s.add_development_dependency 'rake'
   s.add_development_dependency 'minitest'
   s.required_ruby_version = '>= 2.0'
