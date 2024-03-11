@@ -48,8 +48,9 @@ SeaPool.new do |a|
 
 ## Limitations
 
-- currently does not evaluate include guards or `#pragma once`
+- does not evaluate include guards or `#pragma once`
 - does not support including same file multiple times (workaround for the above)
+- does not interpret preprocessor variables
 - input files must be written in a way that makes them suitable for amalgamation
     - ensure no file static name collisions
     - ensure no 'using namespace' in c++
