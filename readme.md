@@ -4,7 +4,7 @@ SeaPool
 A tool for combining many C and/or C++ files into one file.
 
 ~~~ ruby
-Amalgamate.new do |a|
+SeaPool.new do |a|
 
     # these files will be combined into output
     a.add_input 'src/input1.cpp'
@@ -35,8 +35,8 @@ Amalgamate.new do |a|
 ## Features
 
 - expands `#include`
-    - `#include""` if a file is found in the include search path
-    - `#include<>` if a file is found in the system include search path
+    - `#include""` if a file is found in the `include` search path
+    - `#include<>` if a file is found in the `system_include` search path
 - will not expand an `#include` if
     - no match is found in the search path
     - a match is found in the exclude list
@@ -48,13 +48,14 @@ Amalgamate.new do |a|
 
 ## Limitations
 
-- currently does not evaluate include guards
+- currently does not evaluate include guards or `#pragma once`
 - does not support including same file multiple times (workaround for the above)
 - input files must be written in a way that makes them suitable for amalgamation
     - ensure no file static name collisions
     - ensure no 'using namespace' in c++
 - it's a preprocessor, it won't check if your code can compile
-- the regexp code expects UTF-8
+- lines that are not UTF-8 are passed through to output without any processing
+- doesn't consider if a file is a link
 
 ## The Future
 
