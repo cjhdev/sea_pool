@@ -171,7 +171,7 @@ class SeaPool
           rescue StopIteration
 
             pop
-            put_line("#line #{top.line_number.next} #{top.file}") if top
+            put_line("#line #{top.line_number.next} #{top.file}\n") if top
             next
 
           end
