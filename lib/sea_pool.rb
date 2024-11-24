@@ -98,7 +98,6 @@ class SeaPool
     INCLUDE_PATTERN = /[ \t]*#[ \t]*include[ \t]+(#{QUOTE_PATTERN}|#{ANGLE_PATTERN}|#{MACRO_PATTERN})[ t]*/
 
     #MACRO_FUNCTION_PATTERN = /(?<macro>[_a-zA-Z][_0-9a-zA-Z]*)/
-
     #DEFINE_SYMBOL_PATTERN = /[ \t]*#[ \t]*define[ \t]+#{MACRO_PATTERN}[ \t]+(.*)$/
     #DEFINE_FUNCTION_PATTERN = /[ \t]*#[ \t]*define[ \t]+#{MACRO_PATTERN}\([[_a-zA-Z]]\)(.*)$/
 
@@ -313,8 +312,3 @@ class SeaPool
   end
 
 end
-
-
-
-
-

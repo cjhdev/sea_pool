@@ -1,0 +1,56 @@
+#/usr/bin/env ruby
+
+require 'sea_pool'
+require 'sea_pool/version'
+require 'optparse'
+
+sea_pool = SeaPool.new(logger: Logger.new(STDOUT))
+
+OptionParser.new do |opts|
+
+  opts.banner = "sea_pool v#{SeaPool::VERSION}"
+
+  opts.separator ""
+  opts.separator "Usage: #{File.basename(__FILE__)} [options] <input_file1> <input_file2> ..."
+  opts.separator ""
+  opts.separator "Options:"
+  opts.separator ""
+
+  opts.on("-h", "--help", "Prints this help") do
+    puts opts
+    exit
+  end
+
+  opts.on("-i=PATH", "--include=PATH", "Add include path") do |n|
+
+    sea_pool.add_include(n)
+
+  end
+
+  opts.on("-s=PATH", "--system=PATH", "Add system include path") do |n|
+
+    sea_pool.add_system_include(n)
+
+  end
+
+  opts.on("-e=PATH", "--exclude=PATH", "Exclude a specific file from being included") do |n|
+
+    sea_pool.add_exclude(n)
+
+  end
+
+  opts.on("-o=OUTPUT", "--output=OUTPUT", "Set the output file") do |n|
+
+    sea_pool.set_output(n)
+
+  end
+
+end.parse!
+
+ARGV.each do |f|
+
+  sea_pool.add_input(f)
+
+end
+
+sea_pool.run

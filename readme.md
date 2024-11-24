@@ -32,6 +32,12 @@ SeaPool.new do |a|
 ).run
 ~~~
 
+Or, a shorter version of the same example in the terminal:
+
+~~~ bash
+bundle exec sea_pool --include=include --system=/opt/somearch/include --ignore=include/to_be_ignored.h --output=combined.cpp src/input1.cpp src/input2.cpp
+~~~
+
 ## Features
 
 - expands `#include`
@@ -45,6 +51,7 @@ SeaPool.new do |a|
 - inserts `#file` into output so that compile time messages can be referenced back to the original files
 - non-recursive and line based
 - depends only on Ruby stdlib (should work with your system Ruby)
+- available as standalone executable via bin/sea_pool_exporter
 
 ## Limitations
 
@@ -57,6 +64,20 @@ SeaPool.new do |a|
 - it's a preprocessor, it won't check if your code can compile
 - lines that are not UTF-8 are passed through to output without any processing
 - doesn't consider if a file is a link
+
+## Exporting Standalone Executable
+
+~~~ bash
+bundle exec sea_pool_exporter > your_executable_file
+~~~
+
+or
+
+~~~ bash
+bundle exec sea_pool_exporter --output=your_executable_file
+~~~
+
+This file can be kept with your project.
 
 ## The Future
 
@@ -71,5 +92,5 @@ SeaPool.new do |a|
 
 ## Why?
 
-- sometimes fewer source files can make a project easier to distribute/integrate
-- sometimes fewer source files will speed up compile time (Arduino + gnu tools ported to Windows!)
+- sometimes fewer source files can make a project easier to distribute
+- sometimes fewer source files will speed up compile time (Arduino + GNU tools ported to Windows!)

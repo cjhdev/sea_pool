@@ -12,5 +12,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rake'
   s.add_development_dependency 'minitest'
   s.required_ruby_version = '>= 2.0'
+  s.executables << "sea_pool"
+  s.executables << "sea_pool_exporter"
 
 end

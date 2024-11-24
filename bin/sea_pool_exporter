@@ -1,0 +1,52 @@
+#/usr/bin/env ruby
+
+require 'optparse'
+
+OptionParser.new do |opts|
+
+  opts.banner = "Usage: sea_pool_export [options]"
+  opts.separator ""
+  opts.separator "Use to export a standalone version."
+
+  opts.on("-h", "--help", "Prints this help") do
+    puts opts
+    exit
+  end
+
+  opts.on("-o=OUTPUT", "--output=OUTPUT", "Set the output file") do |n|
+
+    sea_pool.set_output(n)
+
+  end
+
+end.parse!
+
+m = /VERSION[ ]?=[ ]?"([0-9\.\-]+)"/.match(File.read(File.join(File.dirname(__FILE__), "..", "lib", "sea_pool", "version.rb")))
+
+puts "#/usr/bin/env ruby"
+puts
+
+puts File.read(File.join(File.dirname(__FILE__), "..", "lib", "sea_pool.rb"))
+
+puts
+puts "require 'optparse'"
+puts
+puts "class SeaPool"
+puts "  VERSION = \"#{m[1]}\""
+puts "end"
+puts
+
+File.read(File.join(File.dirname(__FILE__), "sea_pool")).each_line do |line|
+
+  unless line[/env ruby/] or line[/require /]
+
+    puts line
+
+  end
+
+end
+
+
+
+
+
